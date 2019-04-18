@@ -15,6 +15,9 @@
 		A0B4D133225A8AF60077DBFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B4D131225A8AF60077DBFA /* LaunchScreen.storyboard */; };
 		A0B74D492266D7A300D7D0DA /* AddRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D482266D7A300D7D0DA /* AddRecViewController.swift */; };
 		A0B74D4B22679E9900D7D0DA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D4A22679E9900D7D0DA /* RegisterViewController.swift */; };
+		A0B74D4D2267F9DD00D7D0DA /* MediaDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D4C2267F9DD00D7D0DA /* MediaDatabase.swift */; };
+		A0B74D512267FA7000D7D0DA /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D502267FA7000D7D0DA /* Show.swift */; };
+		A0B74D532268010500D7D0DA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D522268010500D7D0DA /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		A0B4D134225A8AF60077DBFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0B74D482266D7A300D7D0DA /* AddRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecViewController.swift; sourceTree = "<group>"; };
 		A0B74D4A22679E9900D7D0DA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		A0B74D4C2267F9DD00D7D0DA /* MediaDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDatabase.swift; sourceTree = "<group>"; };
+		A0B74D502267FA7000D7D0DA /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		A0B74D522268010500D7D0DA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,16 +67,35 @@
 			isa = PBXGroup;
 			children = (
 				A0B4D128225A8AF30077DBFA /* AppDelegate.swift */,
-				A0B4D12A225A8AF30077DBFA /* ViewController.swift */,
-				A0B74D4A22679E9900D7D0DA /* RegisterViewController.swift */,
+				A0B74D4F2267FA0500D7D0DA /* Model */,
+				A0B74D4E2267F9F100D7D0DA /* View Controllers */,
 				A0B4D12C225A8AF30077DBFA /* Main.storyboard */,
-				A0B74D482266D7A300D7D0DA /* AddRecViewController.swift */,
-				A007CE042260644E006F5D09 /* HomeViewController.swift */,
 				A0B4D12F225A8AF60077DBFA /* Assets.xcassets */,
 				A0B4D131225A8AF60077DBFA /* LaunchScreen.storyboard */,
 				A0B4D134225A8AF60077DBFA /* Info.plist */,
 			);
 			path = "Rec Dec";
+			sourceTree = "<group>";
+		};
+		A0B74D4E2267F9F100D7D0DA /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A0B4D12A225A8AF30077DBFA /* ViewController.swift */,
+				A0B74D4A22679E9900D7D0DA /* RegisterViewController.swift */,
+				A0B74D482266D7A300D7D0DA /* AddRecViewController.swift */,
+				A007CE042260644E006F5D09 /* HomeViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A0B74D4F2267FA0500D7D0DA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A0B74D4C2267F9DD00D7D0DA /* MediaDatabase.swift */,
+				A0B74D502267FA7000D7D0DA /* Show.swift */,
+				A0B74D522268010500D7D0DA /* NetworkManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +173,10 @@
 				A0B74D4B22679E9900D7D0DA /* RegisterViewController.swift in Sources */,
 				A0B4D129225A8AF30077DBFA /* AppDelegate.swift in Sources */,
 				A007CE052260644E006F5D09 /* HomeViewController.swift in Sources */,
+				A0B74D532268010500D7D0DA /* NetworkManager.swift in Sources */,
+				A0B74D512267FA7000D7D0DA /* Show.swift in Sources */,
 				A0B74D492266D7A300D7D0DA /* AddRecViewController.swift in Sources */,
+				A0B74D4D2267F9DD00D7D0DA /* MediaDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

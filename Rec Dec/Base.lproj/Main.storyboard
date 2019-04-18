@@ -442,22 +442,107 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                                     <action selector="didTapCancelAddRec:" destination="sYD-j4-Qkp" eventType="touchUpInside" id="4Fk-7Y-JEf"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="4DZ-x8-L4v">
+                                <rect key="frame" x="0.0" y="50" width="359" height="100"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRY-o6-zbV">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
+                                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <scopeButtonTitles>
+                                            <string>Movies</string>
+                                            <string>TV Shows</string>
+                                            <string>Books</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chL-eM-XwP">
+                                        <rect key="frame" x="311" y="0.0" width="48" height="100"/>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapSearch:" destination="sYD-j4-Qkp" eventType="touchUpInside" id="nhs-VU-bEp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="chL-eM-XwP" secondAttribute="trailing" id="cBe-av-oYi"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1CL-Pn-nIf">
+                                <rect key="frame" x="0.0" y="158" width="375" height="509"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="showCell" textLabel="so3-PU-gTD" detailTextLabel="TXE-3P-zfS" rowHeight="151" style="IBUITableViewCellStyleSubtitle" id="3JB-QN-kT1">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="151"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3JB-QN-kT1" id="wNW-4B-SxF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="so3-PU-gTD">
+                                                    <rect key="frame" x="15" y="55" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TXE-3P-zfS">
+                                                    <rect key="frame" x="15" y="78.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LXi-sc-Vz6" firstAttribute="leading" secondItem="xhL-EV-NfT" secondAttribute="leading" constant="15" id="OlH-VZ-Yek"/>
+                            <constraint firstItem="1CL-Pn-nIf" firstAttribute="leading" secondItem="xhL-EV-NfT" secondAttribute="leading" id="3yh-qx-Ffb"/>
+                            <constraint firstItem="xhL-EV-NfT" firstAttribute="trailing" secondItem="LXi-sc-Vz6" secondAttribute="trailing" constant="312" id="Ap0-Qg-rdq"/>
+                            <constraint firstItem="1CL-Pn-nIf" firstAttribute="top" secondItem="4DZ-x8-L4v" secondAttribute="bottom" constant="8" id="Cvv-QT-t3J"/>
+                            <constraint firstItem="xhL-EV-NfT" firstAttribute="trailing" secondItem="4DZ-x8-L4v" secondAttribute="trailing" constant="16" id="Ffh-Wq-mVN"/>
+                            <constraint firstItem="4DZ-x8-L4v" firstAttribute="leading" secondItem="xhL-EV-NfT" secondAttribute="leading" id="Max-Rg-dRe"/>
+                            <constraint firstItem="LXi-sc-Vz6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xhL-EV-NfT" secondAttribute="leading" id="OlH-VZ-Yek"/>
+                            <constraint firstItem="1CL-Pn-nIf" firstAttribute="trailing" secondItem="xhL-EV-NfT" secondAttribute="trailing" id="STV-HY-FoJ"/>
+                            <constraint firstItem="1CL-Pn-nIf" firstAttribute="bottom" secondItem="xhL-EV-NfT" secondAttribute="bottom" id="mSR-Au-bBl"/>
+                            <constraint firstItem="4DZ-x8-L4v" firstAttribute="top" secondItem="LXi-sc-Vz6" secondAttribute="bottom" id="pdN-dG-VEL"/>
                             <constraint firstItem="LXi-sc-Vz6" firstAttribute="top" secondItem="xhL-EV-NfT" secondAttribute="top" id="v1R-Ly-W5b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xhL-EV-NfT"/>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="rRY-o6-zbV" id="zLZ-WH-0ub"/>
+                        <outlet property="searchDisplayController" destination="An1-8E-Dj2" id="wXS-HI-j8E"/>
+                        <outlet property="tableView" destination="1CL-Pn-nIf" id="hf3-2j-8oj"/>
                         <segue destination="2ue-3H-Gdw" kind="unwind" identifier="cancelAddRecUnwindSegue" unwindAction="cancelAddRecWithSegue:" id="y7M-or-cpR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyq-dW-gws" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="2ue-3H-Gdw" userLabel="Exit" sceneMemberID="exit"/>
+                <searchDisplayController id="6w8-9q-cks">
+                    <connections>
+                        <outlet property="delegate" destination="sYD-j4-Qkp" id="5tA-WC-36o"/>
+                        <outlet property="searchContentsController" destination="sYD-j4-Qkp" id="ooE-ga-l3p"/>
+                        <outlet property="searchResultsDataSource" destination="sYD-j4-Qkp" id="rX3-BE-07x"/>
+                        <outlet property="searchResultsDelegate" destination="sYD-j4-Qkp" id="9eb-vj-Fxc"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="An1-8E-Dj2">
+                    <connections>
+                        <outlet property="delegate" destination="sYD-j4-Qkp" id="vzv-U4-Rs7"/>
+                        <outlet property="searchContentsController" destination="sYD-j4-Qkp" id="J5W-bj-QGz"/>
+                        <outlet property="searchResultsDataSource" destination="sYD-j4-Qkp" id="aHi-Rk-0Mz"/>
+                        <outlet property="searchResultsDelegate" destination="sYD-j4-Qkp" id="wm5-qt-wiw"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-535" y="1818"/>
+            <point key="canvasLocation" x="-535.20000000000005" y="1817.5412293853076"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Exx-mX-AT9">
