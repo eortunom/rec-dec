@@ -26,13 +26,26 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return database.numShows()
     }
     
+    // thanks to Lucas Eduardo: https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "showCell")
         cell?.textLabel?.text = database.getShow(i: indexPath.row).innershow.name
-        // cell?.imageView?.image = 
-        //cell?.detailTextLabel?.text = database.getShow(i: indexPath.row).innershow.network.networkName
-        cell?.detailTextLabel?.text = database.getShow(i: indexPath.row).innershow.year.prefix(4).description
-        cell?.imageView?.image = #imageLiteral(resourceName: "blackmirror")
+        cell?.detailTextLabel?.text = database.getShow(i: indexPath.row).innershow.year?.prefix(4).description
+        
+        if let url = database.getShow(i: indexPath.row).getImageURL() {
+            cell?.imageView!.image = #imageLiteral(resourceName: "placeholderposter")  //Shows a placeholder that will stay there until image loads
+            
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    cell?.imageView!.image = UIImage(data: data!)
+                }
+            }
+        }
+        else {
+            cell?.imageView!.image = #imageLiteral(resourceName: "placeholderposter")
+        }
         return cell!
     }
     

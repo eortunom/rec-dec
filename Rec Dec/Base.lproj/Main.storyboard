@@ -443,10 +443,10 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="4DZ-x8-L4v">
-                                <rect key="frame" x="0.0" y="50" width="359" height="100"/>
+                                <rect key="frame" x="0.0" y="50" width="359" height="56"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRY-o6-zbV">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="rRY-o6-zbV">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="56"/>
                                         <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -457,7 +457,7 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                                         </scopeButtonTitles>
                                     </searchBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chL-eM-XwP">
-                                        <rect key="frame" x="311" y="0.0" width="48" height="100"/>
+                                        <rect key="frame" x="311" y="0.0" width="48" height="56"/>
                                         <state key="normal" title="Search">
                                             <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -471,7 +471,7 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1CL-Pn-nIf">
-                                <rect key="frame" x="0.0" y="158" width="375" height="509"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="showCell" textLabel="so3-PU-gTD" detailTextLabel="TXE-3P-zfS" rowHeight="151" style="IBUITableViewCellStyleSubtitle" id="3JB-QN-kT1">

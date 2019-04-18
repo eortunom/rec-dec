@@ -13,50 +13,35 @@ struct ShowWrapper: Codable {
 }
 
 struct InnerShow : Codable {
-    var name : String
-    var year : String
-    //var image : Image
+    let name : String
+    let year : String?
+    let image : Image?
+
     enum CodingKeys : String, CodingKey {
         case name
         case year = "premiered"
-        //case image
+        case image
     }
-    //        struct Image : Codable {
-    //            var url : String
-    //            enum CodingKeys : String, CodingKey {
-    //                case url = "original"
-    //            }
-    //        }
-}
-
-struct Image : Codable {
-    let original : String
+    
+    struct Image : Codable {
+        var url : String
+        enum CodingKeys : String, CodingKey {
+            case url = "original"
+        }
+    }
 }
 
 struct Show : Codable {
-    //var name : String = ""
-    //var network : String = ""
-    //var imageUrl : String = ""
-    //var innershow : InnerShow = InnerShow(name: "", year: "", image: [:])
-    //var innershow : InnerShow = InnerShow(name: "", year: "", image: Image(original: ""))
-    var innershow : InnerShow = InnerShow(name: "", year: "")
+    
+    var innershow : InnerShow
     enum CodingKeys : String, CodingKey {
-        //case name = "trackName"
-        //case network
-        //case imageUrl = "artistName"
         case innershow = "show"
     }
     
-//    init(name : String, artist : String, imageUrl : String) {
-//        self.name = name
-//        self.network = artist
-//        self.imageUrl = imageUrl
-//    }
-    
-//    func getImageURL() -> URL? {
-//        let url = URL(string: innershow.image.url)
-//        return url
-//    }
+    func getImageURL() -> URL? {
+        let url = URL(string: innershow.image?.url ?? "")
+        return url
+    }
     
     /*
      This method takes in Data optional (in this case, the JSON Data) and returns an array of objects of class Show.
