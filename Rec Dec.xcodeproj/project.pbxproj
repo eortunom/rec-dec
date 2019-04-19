@@ -18,6 +18,7 @@
 		A0B74D4D2267F9DD00D7D0DA /* MediaDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D4C2267F9DD00D7D0DA /* MediaDatabase.swift */; };
 		A0B74D512267FA7000D7D0DA /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D502267FA7000D7D0DA /* Show.swift */; };
 		A0B74D532268010500D7D0DA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D522268010500D7D0DA /* NetworkManager.swift */; };
+		A0B74D5722699BC100D7D0DA /* ShowDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D5622699BC000D7D0DA /* ShowDataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		A0B74D4C2267F9DD00D7D0DA /* MediaDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDatabase.swift; sourceTree = "<group>"; };
 		A0B74D502267FA7000D7D0DA /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		A0B74D522268010500D7D0DA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A0B74D5622699BC000D7D0DA /* ShowDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		A0B74D4E2267F9F100D7D0DA /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A0B74D5622699BC000D7D0DA /* ShowDataViewController.swift */,
 				A0B4D12A225A8AF30077DBFA /* ViewController.swift */,
 				A0B74D4A22679E9900D7D0DA /* RegisterViewController.swift */,
 				A0B74D482266D7A300D7D0DA /* AddRecViewController.swift */,
@@ -176,6 +179,7 @@
 				A0B74D532268010500D7D0DA /* NetworkManager.swift in Sources */,
 				A0B74D512267FA7000D7D0DA /* Show.swift in Sources */,
 				A0B74D492266D7A300D7D0DA /* AddRecViewController.swift in Sources */,
+				A0B74D5722699BC100D7D0DA /* ShowDataViewController.swift in Sources */,
 				A0B74D4D2267F9DD00D7D0DA /* MediaDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +327,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9JPVBL5K72;
 				INFOPLIST_FILE = "Rec Dec/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -340,6 +345,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9JPVBL5K72;
 				INFOPLIST_FILE = "Rec Dec/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

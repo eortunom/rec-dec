@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="130" id="7QX-2D-gl1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteRec" rowHeight="130" id="7QX-2D-gl1">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7QX-2D-gl1" id="mAN-0W-Nqa">
@@ -89,10 +89,10 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="I1d-ki-Kdy">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="search" id="ydm-Sf-tjb">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="ydm-Sf-tjb">
                                             <color key="tintColor" red="1" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="hkJ-ba-DHo">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hkJ-ba-DHo">
                                             <color key="tintColor" red="1" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </barButtonItem>
                                     </navigationItem>
@@ -147,10 +147,10 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="Vpd-MG-wny">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="search" id="ca6-Bz-OoE">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="ca6-Bz-OoE">
                                             <color key="tintColor" red="1" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="OnV-5f-JvV">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OnV-5f-JvV">
                                             <color key="tintColor" red="1" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </barButtonItem>
                                     </navigationItem>
@@ -167,15 +167,15 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="89" id="kk2-Ic-XZ8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="inboxRec" rowHeight="89" id="kk2-Ic-XZ8">
                                         <rect key="frame" x="0.0" y="28" width="375" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kk2-Ic-XZ8" id="RLo-3j-r0t">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="88.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uKM-Mk-wLS">
-                                                    <rect key="frame" x="-5" y="-9" width="144" height="87"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKM-Mk-wLS">
+                                                    <rect key="frame" x="-6" y="10.5" width="184" height="67.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Black Mirror" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWa-UU-cQc">
                                                             <rect key="frame" x="28" y="28" width="104" height="23"/>
@@ -201,6 +201,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="uKM-Mk-wLS" firstAttribute="centerY" secondItem="RLo-3j-r0t" secondAttribute="centerY" id="721-bh-oUD"/>
+                                                <constraint firstItem="uKM-Mk-wLS" firstAttribute="bottom" secondItem="RLo-3j-r0t" secondAttribute="bottomMargin" id="XoY-oz-Clm"/>
+                                                <constraint firstItem="uKM-Mk-wLS" firstAttribute="leading" secondItem="RLo-3j-r0t" secondAttribute="leadingMargin" constant="-21" id="YwP-Sy-ErZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="uKM-Mk-wLS" secondAttribute="trailing" constant="203" id="vcp-Az-lwe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -231,10 +234,10 @@
             </objects>
             <point key="canvasLocation" x="941.60000000000002" y="1028.6356821589206"/>
         </scene>
-        <!--View Controller-->
+        <!--Show Data View Controller-->
         <scene sceneID="tjU-6O-ecX">
             <objects>
-                <viewController id="Nmc-av-FL7" sceneMemberID="viewController">
+                <viewController id="Nmc-av-FL7" customClass="ShowDataViewController" customModule="Rec_Dec" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NzY-vc-rwh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,46 +255,53 @@
                                     <constraint firstAttribute="width" constant="142" id="r7A-51-T5Q"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1Q-UD-X16">
-                                <rect key="frame" x="166" y="163" width="193" height="133"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="133" id="0im-RX-cr7"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1Q-UD-X16">
+                                <rect key="frame" x="166" y="163" width="201" height="72"/>
                                 <string key="text">An anthology series exploring a twisted, high-tech world where humanity's greatest innovations and darkest instincts collide.
 </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzx-KO-U45">
-                                <rect key="frame" x="166" y="304" width="193" height="36"/>
-                                <string key="text">Creator: Charlie Brooker
-Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g7-L4-6Rt">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="ofJ-AU-4In"/>
+                                </constraints>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapBackButton:" destination="Nmc-av-FL7" eventType="touchUpInside" id="J66-cX-8zl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YEP-GT-nvx" firstAttribute="top" secondItem="om6-vR-Kpu" secondAttribute="bottom" constant="8" id="00x-Bm-eZK"/>
-                            <constraint firstItem="Gzx-KO-U45" firstAttribute="leading" secondItem="YEP-GT-nvx" secondAttribute="trailing" constant="8" id="6EJ-2w-diM"/>
+                            <constraint firstItem="D1Q-UD-X16" firstAttribute="top" secondItem="YEP-GT-nvx" secondAttribute="top" id="4Az-oL-O7a"/>
+                            <constraint firstItem="jjn-RM-F8C" firstAttribute="trailing" secondItem="D1Q-UD-X16" secondAttribute="trailing" constant="8" id="Ada-q8-Teh"/>
+                            <constraint firstItem="3g7-L4-6Rt" firstAttribute="top" secondItem="jjn-RM-F8C" secondAttribute="top" id="REc-Wj-i82"/>
                             <constraint firstItem="om6-vR-Kpu" firstAttribute="leading" secondItem="jjn-RM-F8C" secondAttribute="leading" constant="16" id="UhW-Px-I1n"/>
                             <constraint firstItem="om6-vR-Kpu" firstAttribute="top" secondItem="jjn-RM-F8C" secondAttribute="top" constant="83" id="VCp-AP-RR3"/>
                             <constraint firstItem="YEP-GT-nvx" firstAttribute="leading" secondItem="jjn-RM-F8C" secondAttribute="leading" constant="16" id="Zie-VC-wYH"/>
-                            <constraint firstItem="D1Q-UD-X16" firstAttribute="trailing" secondItem="Gzx-KO-U45" secondAttribute="trailing" id="bgt-Yq-6ws"/>
                             <constraint firstItem="D1Q-UD-X16" firstAttribute="top" secondItem="YEP-GT-nvx" secondAttribute="top" id="eiu-hu-98u"/>
-                            <constraint firstItem="Gzx-KO-U45" firstAttribute="top" secondItem="D1Q-UD-X16" secondAttribute="bottom" constant="8" id="f7I-yl-ysI"/>
-                            <constraint firstItem="D1Q-UD-X16" firstAttribute="leading" secondItem="Gzx-KO-U45" secondAttribute="leading" id="io8-xb-JzG"/>
-                            <constraint firstItem="jjn-RM-F8C" firstAttribute="trailing" secondItem="Gzx-KO-U45" secondAttribute="trailing" constant="16" id="tjr-rY-6JC"/>
-                            <constraint firstItem="Gzx-KO-U45" firstAttribute="top" secondItem="D1Q-UD-X16" secondAttribute="bottom" constant="8" id="wMv-XD-vZK"/>
+                            <constraint firstItem="D1Q-UD-X16" firstAttribute="leading" secondItem="YEP-GT-nvx" secondAttribute="trailing" constant="8" id="f8R-DR-XWW"/>
+                            <constraint firstItem="3g7-L4-6Rt" firstAttribute="leading" secondItem="jjn-RM-F8C" secondAttribute="leading" constant="16" id="wcl-Vq-sC6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jjn-RM-F8C"/>
                     </view>
+                    <connections>
+                        <outlet property="showImage" destination="YEP-GT-nvx" id="jey-P7-Wvf"/>
+                        <outlet property="showSummary" destination="D1Q-UD-X16" id="hrS-CZ-qUE"/>
+                        <outlet property="showTitle" destination="om6-vR-Kpu" id="a5l-qd-6oJ"/>
+                        <segue destination="DDd-1w-Tf8" kind="unwind" identifier="showDataUnwindSegue" unwindAction="backFromShowDescriptionWithSegue:" id="l2v-Qi-rvF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vg5-H4-3cF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="DDd-1w-Tf8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1677.5999999999999" y="1029.5352323838081"/>
+            <point key="canvasLocation" x="941.60000000000002" y="1817.5412293853076"/>
         </scene>
         <!--Home-->
         <scene sceneID="Tjx-HD-RYD">
@@ -306,10 +316,10 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="j3D-I7-g02">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="search" id="5QG-O9-8Kf">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="5QG-O9-8Kf">
                                             <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="fNo-fi-Trq">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fNo-fi-Trq">
                                             <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="sYD-j4-Qkp" kind="showDetail" id="YUd-3O-lMY"/>
@@ -337,7 +347,7 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                                 <rect key="frame" x="0.0" y="110" width="375" height="508"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="130" id="uMc-Oa-c6j">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recCell" rowHeight="130" id="uMc-Oa-c6j">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uMc-Oa-c6j" id="vaI-Z8-nH7">
@@ -345,10 +355,10 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clubdecuervos" translatesAutoresizingMaskIntoConstraints="NO" id="KAl-os-1z4">
-                                                    <rect key="frame" x="15" y="11" width="70" height="106"/>
+                                                    <rect key="frame" x="15" y="11" width="109" height="106"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5EO-IJ-ZiI">
-                                                    <rect key="frame" x="98" y="11" width="179" height="95"/>
+                                                    <rect key="frame" x="137" y="11" width="140" height="95"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Club de Cuervos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsc-pm-Zat">
                                                             <rect key="frame" x="0.0" y="13" width="165" height="28"/>
@@ -434,7 +444,7 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXi-sc-Vz6">
-                                <rect key="frame" x="15" y="20" width="48" height="30"/>
+                                <rect key="frame" x="0.0" y="20" width="63" height="30"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -474,11 +484,11 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="showCell" textLabel="so3-PU-gTD" detailTextLabel="TXE-3P-zfS" rowHeight="151" style="IBUITableViewCellStyleSubtitle" id="3JB-QN-kT1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="showCell" textLabel="so3-PU-gTD" detailTextLabel="TXE-3P-zfS" rowHeight="151" style="IBUITableViewCellStyleSubtitle" id="3JB-QN-kT1">
                                         <rect key="frame" x="0.0" y="28" width="375" height="151"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3JB-QN-kT1" id="wNW-4B-SxF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="150.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="so3-PU-gTD">
@@ -508,7 +518,7 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                             <constraint firstItem="1CL-Pn-nIf" firstAttribute="top" secondItem="4DZ-x8-L4v" secondAttribute="bottom" constant="8" id="Cvv-QT-t3J"/>
                             <constraint firstItem="xhL-EV-NfT" firstAttribute="trailing" secondItem="4DZ-x8-L4v" secondAttribute="trailing" constant="16" id="Ffh-Wq-mVN"/>
                             <constraint firstItem="4DZ-x8-L4v" firstAttribute="leading" secondItem="xhL-EV-NfT" secondAttribute="leading" id="Max-Rg-dRe"/>
-                            <constraint firstItem="LXi-sc-Vz6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xhL-EV-NfT" secondAttribute="leading" id="OlH-VZ-Yek"/>
+                            <constraint firstItem="LXi-sc-Vz6" firstAttribute="leading" secondItem="xhL-EV-NfT" secondAttribute="leading" id="OlH-VZ-Yek"/>
                             <constraint firstItem="1CL-Pn-nIf" firstAttribute="trailing" secondItem="xhL-EV-NfT" secondAttribute="trailing" id="STV-HY-FoJ"/>
                             <constraint firstItem="1CL-Pn-nIf" firstAttribute="bottom" secondItem="xhL-EV-NfT" secondAttribute="bottom" id="mSR-Au-bBl"/>
                             <constraint firstItem="4DZ-x8-L4v" firstAttribute="top" secondItem="LXi-sc-Vz6" secondAttribute="bottom" id="pdN-dG-VEL"/>
@@ -518,9 +528,9 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="rRY-o6-zbV" id="zLZ-WH-0ub"/>
-                        <outlet property="searchDisplayController" destination="An1-8E-Dj2" id="wXS-HI-j8E"/>
                         <outlet property="tableView" destination="1CL-Pn-nIf" id="hf3-2j-8oj"/>
                         <segue destination="2ue-3H-Gdw" kind="unwind" identifier="cancelAddRecUnwindSegue" unwindAction="cancelAddRecWithSegue:" id="y7M-or-cpR"/>
+                        <segue destination="Nmc-av-FL7" kind="show" identifier="showDetailSegue" id="fVQ-B4-eOl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyq-dW-gws" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -531,14 +541,6 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
                         <outlet property="searchContentsController" destination="sYD-j4-Qkp" id="ooE-ga-l3p"/>
                         <outlet property="searchResultsDataSource" destination="sYD-j4-Qkp" id="rX3-BE-07x"/>
                         <outlet property="searchResultsDelegate" destination="sYD-j4-Qkp" id="9eb-vj-Fxc"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="An1-8E-Dj2">
-                    <connections>
-                        <outlet property="delegate" destination="sYD-j4-Qkp" id="vzv-U4-Rs7"/>
-                        <outlet property="searchContentsController" destination="sYD-j4-Qkp" id="J5W-bj-QGz"/>
-                        <outlet property="searchResultsDataSource" destination="sYD-j4-Qkp" id="aHi-Rk-0Mz"/>
-                        <outlet property="searchResultsDelegate" destination="sYD-j4-Qkp" id="wm5-qt-wiw"/>
                     </connections>
                 </searchDisplayController>
             </objects>
@@ -873,4 +875,7 @@ Stars: Daniel Lapaine, Hannah John-Kamen, Michaela Coel </string>
         <image name="star" width="1024" height="1024"/>
         <image name="white words" width="652" height="143"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fVQ-B4-eOl"/>
+    </inferredMetricsTieBreakers>
 </document>

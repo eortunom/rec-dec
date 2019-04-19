@@ -10,30 +10,29 @@ import UIKit
 
 class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    //var show : InnerShow
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-        database = MediaDatabase()
     }
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    var database: MediaDatabase!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return database.numShows()
+        return MediaDatabase.numShows()
     }
     
     // thanks to Lucas Eduardo: https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "showCell")
-        cell?.textLabel?.text = database.getShow(i: indexPath.row).innershow.name
-        cell?.detailTextLabel?.text = database.getShow(i: indexPath.row).innershow.year?.prefix(4).description
+        cell?.textLabel?.text = MediaDatabase.getShow(i: indexPath.row).name
+        cell?.detailTextLabel?.text = MediaDatabase.getShow(i: indexPath.row).year?.prefix(4).description
         
-        if let url = database.getShow(i: indexPath.row).getImageURL() {
+        if let url = MediaDatabase.getShow(i: indexPath.row).getImageURL() {
             cell?.imageView!.image = #imageLiteral(resourceName: "placeholderposter")  //Shows a placeholder that will stay there until image loads
             
             DispatchQueue.global().async {
@@ -53,13 +52,21 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return 100
     }
     
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDetailSegue", sender: indexPath)
+    }
+    
+//    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        return
+//    }
+    
     
     @IBAction func didTapSearch(_ sender: Any) {
         if let term = searchBar.text {
             NetworkManager.networkRequestWithSearchTerm(term: term) { (shows) in
-                self.database.clearDatabase()
+                MediaDatabase.clearDatabase()
                 for show in shows {
-                    self.database.addShow(show: show)
+                    MediaDatabase.addShow(show: show.show)
                 }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -70,17 +77,23 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     @IBAction func didTapCancelAddRec(_ sender: Any) {
+        MediaDatabase.clearDatabase()
         performSegue(withIdentifier: "cancelAddRecUnwindSegue", sender: self)
     }
     
-    /*
+    @IBAction func backFromShowDescription(segue: UIStoryboardSegue) {  }
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showDetailSegue" {
+            let indexPath = sender as! IndexPath
+            let selectedRow = indexPath.row
+            let dest = segue.destination as! ShowDataViewController
+            dest.show = MediaDatabase.getShow(i: selectedRow)
+        }
     }
-    */
 
 }

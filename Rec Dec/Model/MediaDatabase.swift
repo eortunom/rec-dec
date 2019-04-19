@@ -9,21 +9,21 @@
 import Foundation
 
 struct MediaDatabase {
-    var shows = [Show]()
+    static var shows : [Show] = []
     
-    func numShows() -> Int {
+    static func numShows() -> Int {
         return shows.count
     }
     
-    mutating func addShow(show: Show) {
+    static func addShow(show: Show) {
         shows.append(show)
     }
     
-    mutating func clearDatabase() {
+    static func clearDatabase() {
         shows = []
     }
     
-    func getShow(i: Int) -> Show {
+    static func getShow(i: Int) -> Show {
         return shows[i]
     }
     

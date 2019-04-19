@@ -7,7 +7,7 @@ import Foundation
 
 class NetworkManager {
     
-    static func networkRequestWithSearchTerm(term: String, completion: @escaping ([Show]) -> Void) {
+    static func networkRequestWithSearchTerm(term: String, completion: @escaping ([ShowInnerWrapper]) -> Void) {
         let query = term.replacingOccurrences(of: " ", with: "%20")
         let url = URL(string: "http://api.tvmaze.com/search/shows?q=\(query)")
         
@@ -23,7 +23,7 @@ class NetworkManager {
                 print("Not 200 response code")
                 return
             }
-            if let shows = Show.dataToShows(data) {
+            if let shows = ShowInnerWrapper.dataToShows(data) {
                 completion(shows)
             } else {
                 print("Error")
