@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func cancelAddRec(segue: UIStoryboardSegue) {  }
+    
+    @IBAction func addNewRec(segue: UIStoryboardSegue) {  }
 
     /*
     // MARK: - Navigation

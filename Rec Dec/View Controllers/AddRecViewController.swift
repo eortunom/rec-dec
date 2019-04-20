@@ -10,7 +10,6 @@ import UIKit
 
 class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    //var show : InnerShow
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +29,7 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "showCell")
         cell?.textLabel?.text = MediaDatabase.getShow(i: indexPath.row).name
-        cell?.detailTextLabel?.text = MediaDatabase.getShow(i: indexPath.row).year?.prefix(4).description
+        cell?.detailTextLabel?.text = MediaDatabase.getShow(i: indexPath.row).date?.prefix(4).description
         
         if let url = MediaDatabase.getShow(i: indexPath.row).getImageURL() {
             cell?.imageView!.image = #imageLiteral(resourceName: "placeholderposter")  //Shows a placeholder that will stay there until image loads
@@ -54,6 +53,10 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetailSegue", sender: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "addNewRecSegue", sender: indexPath)
     }
     
 //    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -93,6 +96,11 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let selectedRow = indexPath.row
             let dest = segue.destination as! ShowDataViewController
             dest.show = MediaDatabase.getShow(i: selectedRow)
+        }
+        if segue.identifier == "addNewRecSegue" {
+            let indexPath = sender as! IndexPath
+            let selectedRow = indexPath.row
+            FirebaseController.addShow(newShow: MediaDatabase.getShow(i: selectedRow))
         }
     }
 

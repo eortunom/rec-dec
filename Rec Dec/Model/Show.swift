@@ -41,13 +41,13 @@ struct ShowInnerWrapper : Codable {
 
 struct Show : Codable {
     let name : String
-    let year : String?
+    let date : String?
     let image : Image?
     let summary : String?
     
     enum CodingKeys : String, CodingKey {
         case name
-        case year = "premiered"
+        case date = "premiered"
         case image
         case summary
     }

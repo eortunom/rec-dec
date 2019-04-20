@@ -34,6 +34,7 @@ class ShowDataViewController: UIViewController {
                 documentAttributes: nil)
             // suppose we have an UILabel, but any element with NSAttributedString will do
             showSummary.attributedText = attrStr
+            showSummary.font = UIFont (name: "System", size: 10)
         }
         
         if let url = show?.getImageURL() {

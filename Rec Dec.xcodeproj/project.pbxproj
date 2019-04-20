@@ -19,9 +19,15 @@
 		A0B74D512267FA7000D7D0DA /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D502267FA7000D7D0DA /* Show.swift */; };
 		A0B74D532268010500D7D0DA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D522268010500D7D0DA /* NetworkManager.swift */; };
 		A0B74D5722699BC100D7D0DA /* ShowDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D5622699BC000D7D0DA /* ShowDataViewController.swift */; };
+		A0B74D59226ADD0000D7D0DA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0B74D58226ADD0000D7D0DA /* GoogleService-Info.plist */; };
+		A0B74D5B226BC18F00D7D0DA /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D5A226BC18F00D7D0DA /* FirebaseController.swift */; };
+		C12F2324FCB6EB442AA5827F /* Pods_Rec_Dec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DEF62A3EC114684178B6116 /* Pods_Rec_Dec.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E83BEA240E5ED16364FE65C /* Pods-Rec Dec.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rec Dec.release.xcconfig"; path = "Target Support Files/Pods-Rec Dec/Pods-Rec Dec.release.xcconfig"; sourceTree = "<group>"; };
+		7DEF62A3EC114684178B6116 /* Pods_Rec_Dec.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rec_Dec.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F60DB3A34F2146A114C797B /* Pods-Rec Dec.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rec Dec.debug.xcconfig"; path = "Target Support Files/Pods-Rec Dec/Pods-Rec Dec.debug.xcconfig"; sourceTree = "<group>"; };
 		A007CE042260644E006F5D09 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A0B4D125225A8AF30077DBFA /* Rec Dec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rec Dec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B4D128225A8AF30077DBFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +42,8 @@
 		A0B74D502267FA7000D7D0DA /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		A0B74D522268010500D7D0DA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A0B74D5622699BC000D7D0DA /* ShowDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataViewController.swift; sourceTree = "<group>"; };
+		A0B74D58226ADD0000D7D0DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A0B74D5A226BC18F00D7D0DA /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12F2324FCB6EB442AA5827F /* Pods_Rec_Dec.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D5A63065C3313A7F3C68DF8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F60DB3A34F2146A114C797B /* Pods-Rec Dec.debug.xcconfig */,
+				5E83BEA240E5ED16364FE65C /* Pods-Rec Dec.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		29E0E2E75EC7DFAF2840EC72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7DEF62A3EC114684178B6116 /* Pods_Rec_Dec.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A0B4D11C225A8AF30077DBFA = {
 			isa = PBXGroup;
 			children = (
 				A0B4D127225A8AF30077DBFA /* Rec Dec */,
 				A0B4D126225A8AF30077DBFA /* Products */,
+				0D5A63065C3313A7F3C68DF8 /* Pods */,
+				29E0E2E75EC7DFAF2840EC72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +103,7 @@
 				A0B4D12F225A8AF60077DBFA /* Assets.xcassets */,
 				A0B4D131225A8AF60077DBFA /* LaunchScreen.storyboard */,
 				A0B4D134225A8AF60077DBFA /* Info.plist */,
+				A0B74D58226ADD0000D7D0DA /* GoogleService-Info.plist */,
 			);
 			path = "Rec Dec";
 			sourceTree = "<group>";
@@ -96,6 +125,7 @@
 			children = (
 				A0B74D4C2267F9DD00D7D0DA /* MediaDatabase.swift */,
 				A0B74D502267FA7000D7D0DA /* Show.swift */,
+				A0B74D5A226BC18F00D7D0DA /* FirebaseController.swift */,
 				A0B74D522268010500D7D0DA /* NetworkManager.swift */,
 			);
 			path = Model;
@@ -108,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0B4D137225A8AF60077DBFA /* Build configuration list for PBXNativeTarget "Rec Dec" */;
 			buildPhases = (
+				A45EF0111A57356257BC65F5 /* [CP] Check Pods Manifest.lock */,
 				A0B4D121225A8AF30077DBFA /* Sources */,
 				A0B4D122225A8AF30077DBFA /* Frameworks */,
 				A0B4D123225A8AF30077DBFA /* Resources */,
+				FD35D67CAD0955C157BD9C9C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -160,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0B4D133225A8AF60077DBFA /* LaunchScreen.storyboard in Resources */,
+				A0B74D59226ADD0000D7D0DA /* GoogleService-Info.plist in Resources */,
 				A0B4D130225A8AF60077DBFA /* Assets.xcassets in Resources */,
 				A0B4D12E225A8AF30077DBFA /* Main.storyboard in Resources */,
 			);
@@ -167,11 +200,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A45EF0111A57356257BC65F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rec Dec-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD35D67CAD0955C157BD9C9C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rec Dec/Pods-Rec Dec-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rec Dec/Pods-Rec Dec-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A0B4D121225A8AF30077DBFA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B74D5B226BC18F00D7D0DA /* FirebaseController.swift in Sources */,
 				A0B4D12B225A8AF30077DBFA /* ViewController.swift in Sources */,
 				A0B74D4B22679E9900D7D0DA /* RegisterViewController.swift in Sources */,
 				A0B4D129225A8AF30077DBFA /* AppDelegate.swift in Sources */,
@@ -324,6 +417,7 @@
 		};
 		A0B4D138225A8AF60077DBFA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F60DB3A34F2146A114C797B /* Pods-Rec Dec.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -342,6 +436,7 @@
 		};
 		A0B4D139225A8AF60077DBFA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E83BEA240E5ED16364FE65C /* Pods-Rec Dec.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
