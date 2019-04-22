@@ -7,26 +7,44 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     var loggedIn = "eduardo"
     var recDatabase = MediaSearchDatabase.init()
-    
+
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
+    
+    lazy var db: Firestore! = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        let shows = FirebaseController.fetchShows()
-        for show in shows {
-            print("adding")
-            recDatabase.addShow(show: show)
-        }
+        
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        
+        fetchShows()
         
         // Do any additional setup after loading the view.
+    }
+    
+    func fetchShows() {
+        self.db.collection("users").document("eduardo").getDocument(source: FirestoreSource.default) { (document, error) in
+            if let document = document {
+                let dataDescription = document.data()
+                for element in dataDescription!["recs"]! as! [[String : String]] {
+                    let date = (element["date"] == "none" ? nil : element["date"])
+                    let summary = (element["summary"] == "none" ? nil : element["summary"])
+                    let image = (element["image"] == "none" ? nil : element["image"])
+                    self.recDatabase.addShow(show: Show.init(name: element["name"]!, date: date, image: Show.Image.init(url: image), summary: summary))
+                }
+            }
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,24 +54,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return recDatabase.numShows()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "showCell")
-                cell?.textLabel?.text = recDatabase.getShow(i: indexPath.row).name
-                cell?.detailTextLabel?.text = recDatabase.getShow(i: indexPath.row).date?.prefix(4).description
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recCell")
+        cell?.textLabel?.text = recDatabase.getShow(i: indexPath.row).name
+        cell?.detailTextLabel?.text = recDatabase.getShow(i: indexPath.row).date?.prefix(4).description
         
-                if let url = recDatabase.getShow(i: indexPath.row).getImageURL() {
-                    cell?.imageView!.image = #imageLiteral(resourceName: "placeholderposter")  //Shows a placeholder that will stay there until image loads
-        
-                    DispatchQueue.global().async {
-                        let data = try? Data(contentsOf: url)
-                        DispatchQueue.main.async {
-                            cell?.imageView!.image = UIImage(data: data!)
-                        }
-                    }
+        if let url = recDatabase.getShow(i: indexPath.row).getImageURL() {
+            cell?.imageView!.image = #imageLiteral(resourceName: "placeholderposter")  //Shows a placeholder that will stay there until image loads
+            
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    cell?.imageView!.image = UIImage(data: data!)
                 }
-                else {
-                    cell?.imageView!.image = #imageLiteral(resourceName: "placeholderposter")
-                }
+            }
+        }
+        else {
+            cell?.imageView!.image = #imageLiteral(resourceName: "placeholderposter")
+        }
         return cell!
     }
     

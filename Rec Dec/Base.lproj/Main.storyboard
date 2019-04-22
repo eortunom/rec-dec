@@ -315,25 +315,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="TPk-c6-af4">
-                                <rect key="frame" x="0.0" y="110" width="375" height="508"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zvK-dP-0kE">
+                                <rect key="frame" x="0.0" y="110" width="375" height="500"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="showCell" textLabel="h15-Ty-OcE" detailTextLabel="3Zf-1q-zO7" rowHeight="151" style="IBUITableViewCellStyleSubtitle" id="QXd-oK-Cus">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="151"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="recCell" textLabel="JE4-Dj-HrN" detailTextLabel="CGT-80-gUG" rowHeight="151" style="IBUITableViewCellStyleSubtitle" id="BjZ-KP-aLv">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="151"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QXd-oK-Cus" id="i2P-gf-flo">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BjZ-KP-aLv" id="u9b-ho-6AZ">
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="150.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h15-Ty-OcE">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JE4-Dj-HrN">
                                                     <rect key="frame" x="15" y="55" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Zf-1q-zO7">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CGT-80-gUG">
                                                     <rect key="frame" x="15" y="78.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -384,26 +384,26 @@
                             <constraint firstItem="Cvx-rv-bhY" firstAttribute="trailing" secondItem="Ff4-Tc-qQO" secondAttribute="trailing" id="6pB-Gk-Rug"/>
                             <constraint firstItem="hcA-m7-Z0B" firstAttribute="top" secondItem="Ff4-Tc-qQO" secondAttribute="top" constant="4" id="Et9-0G-vN3"/>
                             <constraint firstItem="hcA-m7-Z0B" firstAttribute="centerX" secondItem="sAU-Bu-Cmr" secondAttribute="centerX" id="HkV-l4-GDt"/>
-                            <constraint firstItem="TPk-c6-af4" firstAttribute="trailing" secondItem="Ff4-Tc-qQO" secondAttribute="trailing" id="PT2-42-fMw"/>
+                            <constraint firstItem="zvK-dP-0kE" firstAttribute="leading" secondItem="Ff4-Tc-qQO" secondAttribute="leading" id="TzQ-Nw-6BK"/>
                             <constraint firstItem="Rhg-IL-Kll" firstAttribute="leading" secondItem="Ff4-Tc-qQO" secondAttribute="leading" constant="15" id="bPo-7B-maN"/>
                             <constraint firstItem="Cvx-rv-bhY" firstAttribute="top" secondItem="Ff4-Tc-qQO" secondAttribute="top" id="cdW-NU-rdn"/>
                             <constraint firstItem="Ff4-Tc-qQO" firstAttribute="trailing" secondItem="Rhg-IL-Kll" secondAttribute="trailing" constant="15" id="gG1-Rf-o1h"/>
-                            <constraint firstItem="TPk-c6-af4" firstAttribute="top" secondItem="Rhg-IL-Kll" secondAttribute="bottom" constant="8" id="qDy-qi-gDh"/>
+                            <constraint firstItem="zvK-dP-0kE" firstAttribute="top" secondItem="Rhg-IL-Kll" secondAttribute="bottom" constant="8" id="gJC-uk-Wxg"/>
+                            <constraint firstItem="Ff4-Tc-qQO" firstAttribute="bottom" secondItem="zvK-dP-0kE" secondAttribute="bottom" constant="8" id="pdg-C5-g0a"/>
                             <constraint firstItem="Cvx-rv-bhY" firstAttribute="leading" secondItem="Ff4-Tc-qQO" secondAttribute="leading" id="qeA-Ox-B0w"/>
-                            <constraint firstItem="TPk-c6-af4" firstAttribute="bottom" secondItem="Ff4-Tc-qQO" secondAttribute="bottom" id="rMv-db-gWd"/>
-                            <constraint firstItem="TPk-c6-af4" firstAttribute="leading" secondItem="Ff4-Tc-qQO" secondAttribute="leading" id="sg8-dl-FHA"/>
+                            <constraint firstItem="zvK-dP-0kE" firstAttribute="trailing" secondItem="Ff4-Tc-qQO" secondAttribute="trailing" id="xcf-cY-2mx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ff4-Tc-qQO"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="Home" id="ZJS-1R-0KZ"/>
                     <connections>
                         <outlet property="navItem" destination="j3D-I7-g02" id="zTm-mj-rCX"/>
-                        <outlet property="tableView" destination="TPk-c6-af4" id="O9M-FX-uR7"/>
+                        <outlet property="tableView" destination="zvK-dP-0kE" id="s9s-Uw-leh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37e-7c-4eS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-535" y="1030"/>
+            <point key="canvasLocation" x="-535.20000000000005" y="1029.5352323838081"/>
         </scene>
         <!--Add Rec View Controller-->
         <scene sceneID="df0-K9-9V5">
