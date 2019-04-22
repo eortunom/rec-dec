@@ -8,22 +8,22 @@
 
 import Foundation
 
-struct MediaDatabase {
-    static var shows : [Show] = []
+struct MediaSearchDatabase {
+    private var shows : [Show] = []
     
-    static func numShows() -> Int {
+    func numShows() -> Int {
         return shows.count
     }
     
-    static func addShow(show: Show) {
+    mutating func addShow(show: Show) {
         shows.append(show)
     }
     
-    static func clearDatabase() {
+    mutating func clearDatabase() {
         shows = []
     }
     
-    static func getShow(i: Int) -> Show {
+    func getShow(i: Int) -> Show {
         return shows[i]
     }
     

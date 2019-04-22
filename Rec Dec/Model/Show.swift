@@ -45,6 +45,13 @@ struct Show : Codable {
     let image : Image?
     let summary : String?
     
+    init(name : String, date : String?, image : Image?, summary : String?) {
+        self.name = name
+        self.date = date
+        self.image = image
+        self.summary = summary
+    }
+    
     enum CodingKeys : String, CodingKey {
         case name
         case date = "premiered"
@@ -53,7 +60,10 @@ struct Show : Codable {
     }
     
     struct Image : Codable {
-        var url : String
+        var url : String?
+        init(url : String?) {
+            self.url = url
+        }
         enum CodingKeys : String, CodingKey {
             case url = "original"
         }

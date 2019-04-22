@@ -10,28 +10,30 @@ import UIKit
 
 class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
+    var searchDatabase = MediaSearchDatabase.init()
+
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MediaDatabase.numShows()
+        return searchDatabase.numShows()
     }
     
     // thanks to Lucas Eduardo: https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "showCell")
-        cell?.textLabel?.text = MediaDatabase.getShow(i: indexPath.row).name
-        cell?.detailTextLabel?.text = MediaDatabase.getShow(i: indexPath.row).date?.prefix(4).description
+        cell?.textLabel?.text = searchDatabase.getShow(i: indexPath.row).name
+        cell?.detailTextLabel?.text = searchDatabase.getShow(i: indexPath.row).date?.prefix(4).description
         
-        if let url = MediaDatabase.getShow(i: indexPath.row).getImageURL() {
+        if let url = searchDatabase.getShow(i: indexPath.row).getImageURL() {
             cell?.imageView!.image = #imageLiteral(resourceName: "placeholderposter")  //Shows a placeholder that will stay there until image loads
             
             DispatchQueue.global().async {
@@ -67,9 +69,9 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func didTapSearch(_ sender: Any) {
         if let term = searchBar.text {
             NetworkManager.networkRequestWithSearchTerm(term: term) { (shows) in
-                MediaDatabase.clearDatabase()
+                self.searchDatabase.clearDatabase()
                 for show in shows {
-                    MediaDatabase.addShow(show: show.show)
+                    self.searchDatabase.addShow(show: show.show)
                 }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -80,7 +82,7 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     @IBAction func didTapCancelAddRec(_ sender: Any) {
-        MediaDatabase.clearDatabase()
+        searchDatabase.clearDatabase()
         performSegue(withIdentifier: "cancelAddRecUnwindSegue", sender: self)
     }
     
@@ -95,12 +97,12 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let indexPath = sender as! IndexPath
             let selectedRow = indexPath.row
             let dest = segue.destination as! ShowDataViewController
-            dest.show = MediaDatabase.getShow(i: selectedRow)
+            dest.show = searchDatabase.getShow(i: selectedRow)
         }
         if segue.identifier == "addNewRecSegue" {
             let indexPath = sender as! IndexPath
             let selectedRow = indexPath.row
-            FirebaseController.addShow(newShow: MediaDatabase.getShow(i: selectedRow))
+            FirebaseController.addShow(newShow: searchDatabase.getShow(i: selectedRow))
         }
     }
 

@@ -15,7 +15,7 @@
 		A0B4D133225A8AF60077DBFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B4D131225A8AF60077DBFA /* LaunchScreen.storyboard */; };
 		A0B74D492266D7A300D7D0DA /* AddRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D482266D7A300D7D0DA /* AddRecViewController.swift */; };
 		A0B74D4B22679E9900D7D0DA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D4A22679E9900D7D0DA /* RegisterViewController.swift */; };
-		A0B74D4D2267F9DD00D7D0DA /* MediaDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D4C2267F9DD00D7D0DA /* MediaDatabase.swift */; };
+		A0B74D4D2267F9DD00D7D0DA /* MediaSearchDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D4C2267F9DD00D7D0DA /* MediaSearchDatabase.swift */; };
 		A0B74D512267FA7000D7D0DA /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D502267FA7000D7D0DA /* Show.swift */; };
 		A0B74D532268010500D7D0DA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D522268010500D7D0DA /* NetworkManager.swift */; };
 		A0B74D5722699BC100D7D0DA /* ShowDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74D5622699BC000D7D0DA /* ShowDataViewController.swift */; };
@@ -38,7 +38,7 @@
 		A0B4D134225A8AF60077DBFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0B74D482266D7A300D7D0DA /* AddRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecViewController.swift; sourceTree = "<group>"; };
 		A0B74D4A22679E9900D7D0DA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		A0B74D4C2267F9DD00D7D0DA /* MediaDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDatabase.swift; sourceTree = "<group>"; };
+		A0B74D4C2267F9DD00D7D0DA /* MediaSearchDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSearchDatabase.swift; sourceTree = "<group>"; };
 		A0B74D502267FA7000D7D0DA /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		A0B74D522268010500D7D0DA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A0B74D5622699BC000D7D0DA /* ShowDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataViewController.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		A0B74D4F2267FA0500D7D0DA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A0B74D4C2267F9DD00D7D0DA /* MediaDatabase.swift */,
+				A0B74D4C2267F9DD00D7D0DA /* MediaSearchDatabase.swift */,
 				A0B74D502267FA7000D7D0DA /* Show.swift */,
 				A0B74D5A226BC18F00D7D0DA /* FirebaseController.swift */,
 				A0B74D522268010500D7D0DA /* NetworkManager.swift */,
@@ -273,7 +273,7 @@
 				A0B74D512267FA7000D7D0DA /* Show.swift in Sources */,
 				A0B74D492266D7A300D7D0DA /* AddRecViewController.swift in Sources */,
 				A0B74D5722699BC100D7D0DA /* ShowDataViewController.swift in Sources */,
-				A0B74D4D2267F9DD00D7D0DA /* MediaDatabase.swift in Sources */,
+				A0B74D4D2267F9DD00D7D0DA /* MediaSearchDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
