@@ -27,4 +27,10 @@ struct MediaSearchDatabase {
         return shows[i]
     }
     
+    mutating func removeShow(showToRemove: Show) {
+        if let index = shows.firstIndex(where: {$0.name == showToRemove.name}) {
+            shows.remove(at: index)
+        }
+    }
+    
 }

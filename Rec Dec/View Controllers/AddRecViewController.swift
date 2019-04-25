@@ -61,10 +61,6 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
         performSegue(withIdentifier: "addNewRecSegue", sender: indexPath)
     }
     
-//    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        return
-//    }
-    
     
     @IBAction func didTapSearch(_ sender: Any) {
         if let term = searchBar.text {
@@ -102,7 +98,11 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if segue.identifier == "addNewRecSegue" {
             let indexPath = sender as! IndexPath
             let selectedRow = indexPath.row
-            FirebaseController.addShow(newShow: searchDatabase.getShow(i: selectedRow))
+            let showToAdd = searchDatabase.getShow(i: selectedRow)
+            FirebaseController.addShow(newShow: showToAdd)
+            let dest = segue.destination as! HomeViewController
+            dest.recDatabase.addShow(show: showToAdd)
+            dest.tableView.reloadData()
         }
     }
 
