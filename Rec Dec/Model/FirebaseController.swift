@@ -18,7 +18,7 @@ struct FirebaseController {
             imageUrl = image.absoluteString
         }
         db.collection("users").document("eduardo").updateData([
-            "recs": FieldValue.arrayUnion([["name" : newShow.name, "date" : newShow.date ?? "none", "image" : imageUrl, "summary" : newShow.summary ?? "none"]])
+            "recs": FieldValue.arrayUnion([["name" : newShow.name, "date" : newShow.date ?? "none", "image" : imageUrl, "summary" : newShow.summary ?? "none", "recBy" : newShow.recBy]])
             ])
     }
     

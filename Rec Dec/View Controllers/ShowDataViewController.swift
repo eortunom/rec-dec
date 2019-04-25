@@ -12,6 +12,8 @@ class ShowDataViewController: UIViewController {
 
     var show : Show?
     
+    var callerView : String? = nil
+    
     @IBOutlet weak var showTitle: UILabel!
     @IBOutlet weak var showImage: UIImageView!
     @IBOutlet weak var showSummary: UILabel!
@@ -54,7 +56,11 @@ class ShowDataViewController: UIViewController {
     }
     
     @IBAction func didTapBackButton(_ sender: Any) {
-        performSegue(withIdentifier: "showDataUnwindSegue", sender: self)
+        if (callerView == "AddRecViewController") {
+            performSegue(withIdentifier: "showDataUnwindSegue", sender: self)
+        } else if (callerView == "InboxViewController") {
+            performSegue(withIdentifier: "showDataToInbox", sender: self)
+        }
     }
     
     /*

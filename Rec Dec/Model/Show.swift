@@ -45,11 +45,22 @@ struct Show : Codable {
     let image : Image?
     let summary : String?
     
+    var recBy: String? = "Self-add"
+    
     init(name : String, date : String?, image : Image?, summary : String?) {
         self.name = name
         self.date = date
         self.image = image
         self.summary = summary
+        self.recBy = "Self-add"
+    }
+    
+    init(name : String, date : String?, image : Image?, summary : String?, recBy: String) {
+        self.name = name
+        self.date = date
+        self.image = image
+        self.summary = summary
+        self.recBy = recBy
     }
     
     enum CodingKeys : String, CodingKey {

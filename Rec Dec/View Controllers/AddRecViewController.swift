@@ -94,6 +94,7 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let selectedRow = indexPath.row
             let dest = segue.destination as! ShowDataViewController
             dest.show = searchDatabase.getShow(i: selectedRow)
+            dest.callerView = "AddRecViewController"
         }
         if segue.identifier == "addNewRecSegue" {
             let indexPath = sender as! IndexPath

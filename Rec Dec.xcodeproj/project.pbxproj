@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A007CE052260644E006F5D09 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007CE042260644E006F5D09 /* HomeViewController.swift */; };
+		A05BF9D7227188C800465F9F /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BF9D6227188C800465F9F /* InboxViewController.swift */; };
 		A0B4D129225A8AF30077DBFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B4D128225A8AF30077DBFA /* AppDelegate.swift */; };
 		A0B4D12B225A8AF30077DBFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B4D12A225A8AF30077DBFA /* ViewController.swift */; };
 		A0B4D12E225A8AF30077DBFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B4D12C225A8AF30077DBFA /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		7DEF62A3EC114684178B6116 /* Pods_Rec_Dec.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rec_Dec.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F60DB3A34F2146A114C797B /* Pods-Rec Dec.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rec Dec.debug.xcconfig"; path = "Target Support Files/Pods-Rec Dec/Pods-Rec Dec.debug.xcconfig"; sourceTree = "<group>"; };
 		A007CE042260644E006F5D09 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A05BF9D6227188C800465F9F /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		A0B4D125225A8AF30077DBFA /* Rec Dec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rec Dec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B4D128225A8AF30077DBFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0B4D12A225A8AF30077DBFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				A0B74D4A22679E9900D7D0DA /* RegisterViewController.swift */,
 				A0B74D482266D7A300D7D0DA /* AddRecViewController.swift */,
 				A007CE042260644E006F5D09 /* HomeViewController.swift */,
+				A05BF9D6227188C800465F9F /* InboxViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0B74D5B226BC18F00D7D0DA /* FirebaseController.swift in Sources */,
+				A05BF9D7227188C800465F9F /* InboxViewController.swift in Sources */,
 				A0B4D12B225A8AF30077DBFA /* ViewController.swift in Sources */,
 				A0B74D4B22679E9900D7D0DA /* RegisterViewController.swift in Sources */,
 				A0B4D129225A8AF30077DBFA /* AppDelegate.swift in Sources */,
