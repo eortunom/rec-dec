@@ -15,7 +15,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     
     var loggedIn = "eduardo"
-    var recDatabase = MediaSearchDatabase.init()
+    var inboxDatabase = MediaSearchDatabase.init()
     
     lazy var db: Firestore! = Firestore.firestore()
     
@@ -32,15 +32,20 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        fetchShows()
+    }
+    
     func fetchShows() {
-        self.db.collection("users").document("eduardo").getDocument(source: FirestoreSource.default) { (document, error) in
+        self.db.collection("users").document(self.loggedIn).getDocument(source: FirestoreSource.default) { (document, error) in
             if let document = document {
+                self.inboxDatabase.clearDatabase()
                 let dataDescription = document.data()
                 for element in dataDescription!["inbox"]! as! [[String : String]] {
                     let date = (element["date"] == "none" ? nil : element["date"])
                     let summary = (element["summary"] == "none" ? nil : element["summary"])
                     let image = (element["image"] == "none" ? nil : element["image"])
-                    self.recDatabase.addShow(show: Show.init(name: element["name"]!, date: date, image: Show.Image.init(url: image), summary: summary, recBy: element["recBy"]!))
+                    self.inboxDatabase.addShow(show: Show.init(name: element["name"]!, date: date, image: Show.Image.init(url: image), summary: summary, recBy: element["recBy"]!))
                 }
             }
             self.tableView.reloadData()
@@ -48,7 +53,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recDatabase.numShows()
+        return inboxDatabase.numShows()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -56,40 +61,44 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let optionMenu = UIAlertController(title: nil, message: recDatabase.getShow(i: indexPath.row).name, preferredStyle: .actionSheet)
+        let optionMenu = UIAlertController(title: nil, message: inboxDatabase.getShow(i: indexPath.row).name, preferredStyle: .actionSheet)
         
-        let deleteAction = UIAlertAction(title: "Decline", style: .destructive, handler: {
+        let show = self.inboxDatabase.getShow(i: indexPath.row)
+        
+        let declineAction = UIAlertAction(title: "Decline", style: .destructive, handler: {
             (alert: UIAlertAction!) in
-            let show = self.recDatabase.getShow(i: indexPath.row)
-            FirebaseController.removeShow(show: show)
-            self.recDatabase.removeShow(showToRemove: show)
+            FirebaseController.removeShow(show: show, user : self.loggedIn, fromCollection: "inbox")
+            self.inboxDatabase.removeShow(showToRemove: show)
             self.tableView.reloadData()
         })
         
         let acceptAction = UIAlertAction(title: "Accept", style: .default, handler: {
             (alert: UIAlertAction!) in
-            
+            FirebaseController.acceptRec(show: show, user : self.loggedIn)
+            self.inboxDatabase.removeShow(showToRemove: show)
+            self.tableView.reloadData()
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
-        optionMenu.addAction(deleteAction)
         optionMenu.addAction(cancelAction)
         optionMenu.addAction(acceptAction)
+        optionMenu.addAction(declineAction)
         
         self.present(optionMenu, animated: true, completion: {tableView.deselectRow(at: indexPath, animated: true)});
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetailFromInboxSegue", sender: indexPath)
+        let show = inboxDatabase.getShow(i: indexPath.row)
+        performSegue(withIdentifier: "showDetailFromInboxSegue", sender: show)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "inboxRec")
-        cell?.textLabel?.text = recDatabase.getShow(i: indexPath.row).name
-        cell?.detailTextLabel?.text = recDatabase.getShow(i: indexPath.row).recBy
+        cell?.textLabel?.text = inboxDatabase.getShow(i: indexPath.row).name
+        cell?.detailTextLabel?.text = inboxDatabase.getShow(i: indexPath.row).recBy
         
-        if let url = recDatabase.getShow(i: indexPath.row).getImageURL() {
+        if let url = inboxDatabase.getShow(i: indexPath.row).getImageURL() {
             cell?.imageView!.image = #imageLiteral(resourceName: "placeholderposter")  //Shows a placeholder that will stay there until image loads
             
             DispatchQueue.global().async {
@@ -119,15 +128,19 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "showDetailFromInboxSegue" {
-            let indexPath = sender as! IndexPath
-            let selectedRow = indexPath.row
+            let show = sender as! Show
             let dest = segue.destination as! ShowDataViewController
-            dest.show = recDatabase.getShow(i: selectedRow)
+            dest.show = show
+            dest.callerView = "InboxViewController"
+        }
+        if segue.identifier == "browseRecsToSend" {
+            let dest = segue.destination as! AddRecViewController
             dest.callerView = "InboxViewController"
         }
     }
     
     @IBAction func showDescriptionToInbox(segue: UIStoryboardSegue) {  }
-
+    
+    @IBAction func cancelSendRec(segue: UIStoryboardSegue) {  }
 
 }

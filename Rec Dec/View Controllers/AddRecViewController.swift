@@ -12,6 +12,7 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var searchDatabase = MediaSearchDatabase.init()
 
+    var callerView : String? = nil
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -54,11 +55,62 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetailSegue", sender: indexPath)
+        performSegue(withIdentifier: "showDetailSegue", sender: searchDatabase.getShow(i: indexPath.row))
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "addNewRecSegue", sender: indexPath)
+        var showToAdd = searchDatabase.getShow(i: indexPath.row)
+        
+        if callerView! == "HomeViewController" {
+            let alert = UIAlertController(title: "Who recommended " + showToAdd.name + "?", message: "Leave blank to mark it as self-added", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            alert.addTextField(configurationHandler: { textField in
+                textField.placeholder = "Type recommender here"
+            })
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                let name = alert.textFields?.first?.text
+                if name != "" {
+                    showToAdd.recBy = name
+                } else {
+                    showToAdd.recBy = "Self-add"
+                }
+                self.performSegue(withIdentifier: "addNewRecSegue", sender: showToAdd)
+            }))
+            
+            self.present(alert, animated: true)
+        }
+        if callerView! == "InboxViewController" {
+            let alert = UIAlertController(title: "Who do you want to recommend " + showToAdd.name + " to?", message: "Please type in the recipient's username", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            alert.addTextField(configurationHandler: { textField in
+                textField.placeholder = "Type recommender here"
+            })
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                let name = alert.textFields?.first?.text
+                if name != "" {
+                    //TODO: remove hard-coding of name
+                    showToAdd.recBy = "eduardo"
+                    FirebaseController.addShow(show: showToAdd, user: name!, toCollection: "inbox")
+                    
+                    let alert = UIAlertController(title: "Sent!", message: "You recommended " + showToAdd.name + " to " + name! + "!", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
+                        self.performSegue(withIdentifier: "cancelSendSegue", sender: showToAdd)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                } else {
+                    let alert = UIAlertController(title: "Alert", message: "Recipient field can't be blank", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }))
+            
+            self.present(alert, animated: true)
+        }
     }
     
     
@@ -79,7 +131,12 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func didTapCancelAddRec(_ sender: Any) {
         searchDatabase.clearDatabase()
-        performSegue(withIdentifier: "cancelAddRecUnwindSegue", sender: self)
+        if callerView == "HomeViewController" {
+            performSegue(withIdentifier: "cancelAddRecUnwindSegue", sender: self)
+        }
+        if callerView == "InboxViewController" {
+            performSegue(withIdentifier: "cancelSendSegue", sender: self)
+        }
     }
     
     @IBAction func backFromShowDescription(segue: UIStoryboardSegue) {  }
@@ -90,17 +147,15 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "showDetailSegue" {
-            let indexPath = sender as! IndexPath
-            let selectedRow = indexPath.row
+            let showToAdd = sender as! Show
             let dest = segue.destination as! ShowDataViewController
-            dest.show = searchDatabase.getShow(i: selectedRow)
+            dest.show = showToAdd
             dest.callerView = "AddRecViewController"
         }
         if segue.identifier == "addNewRecSegue" {
-            let indexPath = sender as! IndexPath
-            let selectedRow = indexPath.row
-            let showToAdd = searchDatabase.getShow(i: selectedRow)
-            FirebaseController.addShow(newShow: showToAdd)
+            let showToAdd = sender as! Show
+            //TODO: specify user variable instead of hard-coding
+            FirebaseController.addShow(show: showToAdd, user: "eduardo", toCollection: "recs")
             let dest = segue.destination as! HomeViewController
             dest.recDatabase.addShow(show: showToAdd)
             dest.tableView.reloadData()

@@ -23,8 +23,11 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="Vpd-MG-wny">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OnV-5f-JvV">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="OnV-5f-JvV">
                                             <color key="tintColor" red="1" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="sYD-j4-Qkp" kind="showDetail" identifier="browseRecsToSend" id="cdK-cj-bnl"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -90,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSf-VX-RvM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="575" y="1030"/>
+            <point key="canvasLocation" x="900" y="1030"/>
         </scene>
         <!--Show Data View Controller-->
         <scene sceneID="tjU-6O-ecX">
@@ -159,12 +162,13 @@
                         <outlet property="showTitle" destination="om6-vR-Kpu" id="a5l-qd-6oJ"/>
                         <segue destination="DDd-1w-Tf8" kind="unwind" identifier="showDataUnwindSegue" unwindAction="backFromShowDescriptionWithSegue:" id="l2v-Qi-rvF"/>
                         <segue destination="DDd-1w-Tf8" kind="unwind" identifier="showDataToInbox" unwindAction="showDescriptionToInboxWithSegue:" id="U7p-v1-c9x"/>
+                        <segue destination="DDd-1w-Tf8" kind="unwind" identifier="showDataToHome" unwindAction="showDataToHomeWithSegue:" id="Ofw-Qo-KT4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vg5-H4-3cF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DDd-1w-Tf8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="574" y="1818"/>
+            <point key="canvasLocation" x="900" y="2006"/>
         </scene>
         <!--Home-->
         <scene sceneID="Tjx-HD-RYD">
@@ -178,11 +182,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recCell" textLabel="JE4-Dj-HrN" detailTextLabel="CGT-80-gUG" rowHeight="151" style="IBUITableViewCellStyleSubtitle" id="BjZ-KP-aLv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="recCell" textLabel="JE4-Dj-HrN" detailTextLabel="CGT-80-gUG" rowHeight="151" style="IBUITableViewCellStyleSubtitle" id="BjZ-KP-aLv">
                                         <rect key="frame" x="0.0" y="28" width="375" height="151"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BjZ-KP-aLv" id="u9b-ho-6AZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="150.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JE4-Dj-HrN">
@@ -209,10 +213,10 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="j3D-I7-g02">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fNo-fi-Trq">
+                                        <barButtonItem key="rightBarButtonItem" title="Browse" id="fNo-fi-Trq">
                                             <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="sYD-j4-Qkp" kind="showDetail" id="YUd-3O-lMY"/>
+                                                <segue destination="sYD-j4-Qkp" kind="showDetail" identifier="selfAddSegue" id="YUd-3O-lMY"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -243,11 +247,12 @@
                     <tabBarItem key="tabBarItem" title="Home" image="Home" id="ZJS-1R-0KZ"/>
                     <connections>
                         <outlet property="tableView" destination="zvK-dP-0kE" id="s9s-Uw-leh"/>
+                        <segue destination="Nmc-av-FL7" kind="showDetail" identifier="detailFromHomeSegue" id="iqY-Z4-olH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37e-7c-4eS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-535.20000000000005" y="1029.5352323838081"/>
+            <point key="canvasLocation" x="-900" y="1030"/>
         </scene>
         <!--Add Rec View Controller-->
         <scene sceneID="df0-K9-9V5">
@@ -346,6 +351,7 @@
                         <segue destination="2ue-3H-Gdw" kind="unwind" identifier="cancelAddRecUnwindSegue" unwindAction="cancelAddRecWithSegue:" id="y7M-or-cpR"/>
                         <segue destination="Nmc-av-FL7" kind="show" identifier="showDetailSegue" id="fVQ-B4-eOl"/>
                         <segue destination="2ue-3H-Gdw" kind="unwind" identifier="addNewRecSegue" unwindAction="addNewRecWithSegue:" id="GsF-N2-5ev"/>
+                        <segue destination="2ue-3H-Gdw" kind="unwind" identifier="cancelSendSegue" unwindAction="cancelSendRecWithSegue:" id="2bN-J7-S5D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyq-dW-gws" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -359,7 +365,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-535.20000000000005" y="1817.5412293853076"/>
+            <point key="canvasLocation" x="-900" y="2006"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Exx-mX-AT9">
@@ -705,6 +711,7 @@
         <image name="white words" width="652" height="143"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cdK-cj-bnl"/>
         <segue reference="Imh-e7-FQ4"/>
     </inferredMetricsTieBreakers>
 </document>

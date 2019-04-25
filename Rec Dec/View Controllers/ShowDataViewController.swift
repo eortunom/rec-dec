@@ -58,8 +58,12 @@ class ShowDataViewController: UIViewController {
     @IBAction func didTapBackButton(_ sender: Any) {
         if (callerView == "AddRecViewController") {
             performSegue(withIdentifier: "showDataUnwindSegue", sender: self)
-        } else if (callerView == "InboxViewController") {
+        }
+        if (callerView == "InboxViewController") {
             performSegue(withIdentifier: "showDataToInbox", sender: self)
+        }
+        if (callerView == "HomeViewController") {
+            performSegue(withIdentifier: "showDataToHome", sender: self)
         }
     }
     

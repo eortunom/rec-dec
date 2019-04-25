@@ -31,10 +31,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        fetchShows()
+    }
+    
     func fetchShows() {
         self.db.collection("users").document("eduardo").getDocument(source: FirestoreSource.default) { (document, error) in
             if let document = document {
                 let dataDescription = document.data()
+                self.recDatabase.clearDatabase()
                 for element in dataDescription!["recs"]! as! [[String : String]] {
                     let date = (element["date"] == "none" ? nil : element["date"])
                     let summary = (element["summary"] == "none" ? nil : element["summary"])
@@ -60,7 +65,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {
             (alert: UIAlertAction!) in
             let show = self.recDatabase.getShow(i: indexPath.row)
-            FirebaseController.removeShow(show: show)
+            FirebaseController.removeShow(show: show, user: self.loggedIn, fromCollection: "recs")
             self.recDatabase.removeShow(showToRemove: show)
             self.tableView.reloadData()
         })
@@ -71,6 +76,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         optionMenu.addAction(cancelAction)
         
         self.present(optionMenu, animated: true, completion: {tableView.deselectRow(at: indexPath, animated: true)});
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let show = recDatabase.getShow(i: indexPath.row)
+        performSegue(withIdentifier: "detailFromHomeSegue", sender: show)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,15 +107,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func cancelAddRec(segue: UIStoryboardSegue) {  }
     
     @IBAction func addNewRec(segue: UIStoryboardSegue) {  }
+    
+    @IBAction func showDataToHome(segue: UIStoryboardSegue) {  }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "selfAddSegue" {
+            let dest = segue.destination as! AddRecViewController
+            dest.callerView = "HomeViewController"
+        }
+        if segue.identifier == "detailFromHomeSegue" {
+            let show = sender as! Show
+            let dest = segue.destination as! ShowDataViewController
+            dest.show = show
+            dest.callerView = "HomeViewController"
+        }
+        
     }
-    */
 
 }
