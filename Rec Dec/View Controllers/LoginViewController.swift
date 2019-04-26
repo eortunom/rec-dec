@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 extension UITextField {
     func setLeftPaddingPoints(_ amount:CGFloat){
@@ -22,7 +23,7 @@ extension UITextField {
 }
 
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -43,6 +44,15 @@ class ViewController: UIViewController {
     
     
     @IBAction func cancelRegister(segue: UIStoryboardSegue) {  }
+    
+    @IBAction func logOff(segue: UIStoryboardSegue) {  }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "logInSegue" {
+            FirebaseController.loggedIn = username.text ?? "eduardo"
+            FirebaseController.getFullName()
+        }
+    }
 
 
 }

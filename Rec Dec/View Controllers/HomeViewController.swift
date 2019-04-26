@@ -11,12 +11,15 @@ import Firebase
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
-    var loggedIn = "eduardo"
     var recDatabase = MediaSearchDatabase.init()
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     lazy var db: Firestore! = Firestore.firestore()
+    
+    @IBAction func didTapLogOut(_ sender: Any) {
+        performSegue(withIdentifier: "logOffSegue", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +39,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func fetchShows() {
-        self.db.collection("users").document("eduardo").getDocument(source: FirestoreSource.default) { (document, error) in
+        self.db.collection("users").document(FirebaseController.loggedIn).getDocument(source: FirestoreSource.default) { (document, error) in
             if let document = document {
                 let dataDescription = document.data()
                 self.recDatabase.clearDatabase()
                 for element in dataDescription!["recs"]! as! [[String : String]] {
-                    let date = (element["date"] == "none" ? nil : element["date"])
-                    let summary = (element["summary"] == "none" ? nil : element["summary"])
-                    let image = (element["image"] == "none" ? nil : element["image"])
-                    self.recDatabase.addShow(show: Show.init(name: element["name"]!, date: date, image: Show.Image.init(url: image), summary: summary, recBy: element["recBy"]!))
+                    if element != [:] {
+                        let date = (element["date"] == "none" ? nil : element["date"])
+                        let summary = (element["summary"] == "none" ? nil : element["summary"])
+                        let image = (element["image"] == "none" ? nil : element["image"])
+                        self.recDatabase.addShow(show: Show.init(name: element["name"]!, date: date, image: Show.Image.init(url: image), summary: summary, recBy: element["recBy"]!))
+                    }
                 }
             }
             self.tableView.reloadData()
@@ -65,7 +70,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {
             (alert: UIAlertAction!) in
             let show = self.recDatabase.getShow(i: indexPath.row)
-            FirebaseController.removeShow(show: show, user: self.loggedIn, fromCollection: "recs")
+            FirebaseController.removeShow(show: show, user: FirebaseController.loggedIn, fromCollection: "recs")
             self.recDatabase.removeShow(showToRemove: show)
             self.tableView.reloadData()
         })
@@ -109,9 +114,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func addNewRec(segue: UIStoryboardSegue) {  }
     
     @IBAction func showDataToHome(segue: UIStoryboardSegue) {  }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selfAddSegue" {
             let dest = segue.destination as! AddRecViewController
@@ -125,5 +130,5 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
-
+    
 }

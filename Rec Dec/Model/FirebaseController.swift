@@ -12,6 +12,9 @@ import Firebase
 struct FirebaseController {
     static var db: Firestore! = Firestore.firestore()
     
+    static var loggedIn : String = ""
+    static var fullname : String = ""
+    
     static func addShow(show : Show, user : String, toCollection : String) {
         var imageUrl = "none"
         if let image = show.getImageURL() {
@@ -33,5 +36,14 @@ struct FirebaseController {
     static func acceptRec(show : Show, user : String) {
         removeShow(show: show, user: user, fromCollection: "inbox")
         addShow(show: show, user: user, toCollection: "recs")
+    }
+    
+    static func getFullName() {
+        db.collection("users").document(loggedIn).getDocument(source: FirestoreSource.default) { (document, error) in
+            if let document = document {
+                let dataDescription = document.data()
+                fullname = dataDescription!["fullName"] as! String
+            }
+        }
     }
 }

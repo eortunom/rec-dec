@@ -92,8 +92,7 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                 let name = alert.textFields?.first?.text
                 if name != "" {
-                    //TODO: remove hard-coding of name
-                    showToAdd.recBy = "eduardo"
+                    showToAdd.recBy = FirebaseController.fullname
                     FirebaseController.addShow(show: showToAdd, user: name!, toCollection: "inbox")
                     
                     let alert = UIAlertController(title: "Sent!", message: "You recommended " + showToAdd.name + " to " + name! + "!", preferredStyle: UIAlertController.Style.alert)
@@ -154,8 +153,7 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         if segue.identifier == "addNewRecSegue" {
             let showToAdd = sender as! Show
-            //TODO: specify user variable instead of hard-coding
-            FirebaseController.addShow(show: showToAdd, user: "eduardo", toCollection: "recs")
+            FirebaseController.addShow(show: showToAdd, user: FirebaseController.loggedIn, toCollection: "recs")
             let dest = segue.destination as! HomeViewController
             dest.recDatabase.addShow(show: showToAdd)
             dest.tableView.reloadData()
