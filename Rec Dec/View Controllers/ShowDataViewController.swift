@@ -18,6 +18,7 @@ class ShowDataViewController: UIViewController {
     @IBOutlet weak var showImage: UIImageView!
     @IBOutlet weak var showSummary: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //Thanks to Paul B https://stackoverflow.com/questions/25879837/how-to-display-html-formatted-text-in-ios-label/33394209
     
@@ -25,6 +26,8 @@ class ShowDataViewController: UIViewController {
         super.viewDidLoad()
         showTitle.text = self.show?.name
         showSummary.text = self.show?.summary
+        showSummary.sizeToFit()
+        scrollView.contentSize = showSummary.frame.size
         
         if ((self.show?.summary) != nil) {
             let htmlString = self.show?.summary

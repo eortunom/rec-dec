@@ -46,4 +46,24 @@ struct FirebaseController {
             }
         }
     }
+    
+    static func logIn(username : String) {
+        loggedIn = username
+        getFullName()
+    }
+    
+    static func newUser(username : String, fullName : String) {
+        LoginViewController.users.append(username)
+        db.collection("users").document(username).setData([
+            "fullName": fullName,
+            "inbox": [],
+            "recs": []
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
 }

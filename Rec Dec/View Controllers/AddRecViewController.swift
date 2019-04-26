@@ -91,20 +91,24 @@ class AddRecViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                 let name = alert.textFields?.first?.text
-                if name != "" {
+                if name == "" {
+                    let alert = UIAlertController(title: "Error", message: "Recipient field can't be blank", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else if !LoginViewController.users.contains(name!) {
+                    let alert = UIAlertController(title: "Error", message: "Username doesn't exist", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
                     showToAdd.recBy = FirebaseController.fullname
                     FirebaseController.addShow(show: showToAdd, user: name!, toCollection: "inbox")
-                    
+
                     let alert = UIAlertController(title: "Sent!", message: "You recommended " + showToAdd.name + " to " + name! + "!", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
                         self.performSegue(withIdentifier: "cancelSendSegue", sender: showToAdd)
                     }))
                     self.present(alert, animated: true, completion: nil)
                     
-                } else {
-                    let alert = UIAlertController(title: "Alert", message: "Recipient field can't be blank", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
                 }
             }))
             
